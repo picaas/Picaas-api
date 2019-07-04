@@ -400,15 +400,15 @@
                             <p>
                                 You don't have to add header of CSV. Just fill in the custiom_id and url in order. Check
                                 example below.
-                                <pre><code">ID001, https://imgur.com/mZ7AjDP.jpg
-ID002, https://imgur.com/pfTZazm.jpg</code></pre>
+                                <pre><code">custom_id,url
+ID001,https://imgur.com/mZ7AjDP.jpg
+ID002,https://imgur.com/pfTZazm.jpg</code></pre>
                             </p>
                             <p>
                                 Remember to convert CSV to base64 before submit. You can test with <a
                                     href="https://onlinecsvtools.com/convert-csv-to-base64" target="_blank">CSV to
                                     base64 converter</a>. The example below is encoded base 64 string from CSV.
-
-                                <pre><code">SUQwMDEsIGh0dHBzOi8vaW1ndXIuY29tL21aN0FqRFAuanBnCklEMDAyLCBodHRwczovL2ltZ3VyLmNvbS9wZlRaYXptLmpwZw==</code></pre>
+                                <code>Y3VzdG9tX2lkLHVybApJRDAwMSxodHRwczovL2ltZ3VyLmNvbS9tWjdBakRQLmpwZwpJRDAwMixodHRwczovL2ltZ3VyLmNvbS9wZlRaYXptLmpwZw==</code>
                             </p>
 
                             <h3>Request</h3>
@@ -765,7 +765,7 @@ Content-Type: application/json</code></pre>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>5042</td>
-                                                                    <td>IMG001</td>
+                                                                    <td>ID001</td>
                                                                     <td>succeeded</td>
                                                                     <td>0</td>
                                                                     <td>v0008</td>
@@ -774,7 +774,7 @@ Content-Type: application/json</code></pre>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>5043</td>
-                                                                    <td>IMG002</td>
+                                                                    <td>ID002</td>
                                                                     <td>succeeded</td>
                                                                     <td>0</td>
                                                                     <td>v0008</td>
@@ -805,7 +805,7 @@ Content-Type: application/json</code></pre>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>11</td>
-                                                                    <td>IMG001</td>
+                                                                    <td>ID001</td>
                                                                     <td>succeeded</td>
                                                                     <td>0</td>
                                                                     <td>v6</td>
@@ -813,7 +813,7 @@ Content-Type: application/json</code></pre>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>12</td>
-                                                                    <td>IMG002</td>
+                                                                    <td>ID002</td>
                                                                     <td>succeeded</td>
                                                                     <td>0</td>
                                                                     <td>v6</td>
@@ -873,6 +873,14 @@ Content-Type: application/json</code></pre>
                                         <td>00000005</td>
                                         <td>The internal error happened in Picaas server. Please try again or contact us
                                             to report error code.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>00000006</td>
+                                        <td>The content type of image url isn't valid.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>00000007</td>
+                                        <td>AI platform job processed image with error result.</td>
                                     </tr>
                                     <tr>
                                         <td>00000100</td>
