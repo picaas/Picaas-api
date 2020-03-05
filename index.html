@@ -176,6 +176,7 @@
                         <li> <a href="#request-create-image-batch-job">Create Image Batch Job</a> </li>
                         <li> <a href="#request-get-image-batch-job-status">Get Image Batch Job Status</a> </li>
                         <li> <a href="#request-get-image-batch-job">Get Image Batch Job</a></li>
+                        <li> <a href="#request-get-image-quota">Get Image Quota</a></li>
                     </ul>
                 </li>
                 <li> <a href="#error-code">Error Code</a> </li>
@@ -829,6 +830,86 @@ Content-Type: application/json</code></pre>
                                 </div>
                             </div>
 
+                            <hr>
+
+                            <div class="request">
+
+                                <h2 id="request-get-image-quota">
+                                    Get Image Quota
+                                    <a href="#request-get-image-quota"><i class="glyphicon glyphicon-link"></i></a>
+                                </h2>
+        
+                                <div>
+                                    <p>Get legalization quota.</p>
+                                </div>
+        
+                                <div>
+        
+                                    <h3>Endpoint</h3>
+                                    <pre><code class="shell">GET https://app.picaas.io/v1/image_usages/quotas</code></pre>
+        
+                                    <h3>Request</h3>
+                                    <h4>Route</h4>
+                                    <pre><code class="shell">GET https://app.picaas.io/v1/image_usages/quotas</code></pre>
+                                    <h4>Headers</h4>
+                                    <pre><code>Authorization: Bearer &lt;APP_TOKEN&gt;
+Content-Type: application/json</code></pre>
+
+                                    <h3>Response</h3>
+                                    <h4>Response Fields</h4>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>start</th>
+                                                <td>Effective date of Picaas legalization service.</td>
+                                                <td>String</td>
+                                            </tr>
+                                            <tr>
+                                                <th>end</th>
+                                                <td>Deadline of Picaas legalization service.</td>
+                                                <td>String</td>
+                                            </tr>        
+                                            <tr>
+                                                <th>quota</th>
+                                                <td>Quota of images that can be used for legalization.</td>
+                                                <td>Integer</td>
+                                            </tr>        
+                                            <tr>
+                                                <th>remain</th>
+                                                <td>Remained count of images that can be used for legalization.</td>
+                                                <td>Integer</td>
+                                            </tr>
+                                            <tr>
+                                                <th>account_id</th>
+                                                <td>The id of the account which the resource belongs to.</td>
+                                                <td>String</td>
+                                            </tr>
+                                        </tbody>
+        
+                                    </table>
+                                    <h4>Status</h4>
+                                    <pre><code>200 OK</code></pre>
+                                    <h4>Body</h4>
+                                    <pre><code class="json">[
+    {
+        "start": "2019-10-21T00:00:00Z",
+        "end": "2020-10-21T00:00:00Z",
+        "quota": 1000,
+        "remain": 100,
+        "account_id": "picaas.io-test"
+    }
+]</code></pre>
+        
+                                </div>
+        
+                            </div>
 
                             <hr>
 
