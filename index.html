@@ -176,6 +176,7 @@
                         <li> <a href="#request-create-image-batch-job">Create Image Batch Job</a> </li>
                         <li> <a href="#request-get-image-batch-job-status">Get Image Batch Job Status</a> </li>
                         <li> <a href="#request-get-image-batch-job">Get Image Batch Job</a></li>
+                        <li> <a href="#request-get-image-batch-job-histories">Get Image Batch Job Histories</a></li>
                         <li> <a href="#request-get-image-quota">Get Image Quota</a></li>
                     </ul>
                 </li>
@@ -444,7 +445,7 @@ Content-Type: application/json</code></pre>
 
                                     <tr>
                                         <th>task[id]</th>
-                                        <td>The id of the batch job.</td>
+                                        <td>The id of the image batch job.</td>
                                         <td>String</td>
                                     </tr>
                                 </tbody>
@@ -493,7 +494,7 @@ Content-Type: application/json</code></pre>
                                     <tbody>
                                         <tr>
                                             <th>id</th>
-                                            <td>The id of the batch job.</td>
+                                            <td>The id of the image batch job.</td>
                                             <td>Integer</td>
                                         </tr>
                                     </tbody>
@@ -608,7 +609,7 @@ Content-Type: application/json</code></pre>
                                     <tbody>
                                         <tr>
                                             <th>id</th>
-                                            <td>The id of the batch job.</td>
+                                            <td>The id of the image batch job.</td>
                                             <td>Integer</td>
                                         </tr>
 
@@ -639,7 +640,7 @@ Content-Type: application/json</code></pre>
 
                                         <tr>
                                             <th>completed_at</th>
-                                            <td>The batch job completed time.</td>
+                                            <td>The image batch job completed time.</td>
                                             <td>String</td>
                                         </tr>
 
@@ -908,6 +909,127 @@ Content-Type: application/json</code></pre>
 ]</code></pre>
         
                                 </div>
+
+                            </div>
+
+                            <hr>
+                            
+                            <div class="request">
+
+                                <h2 id="request-get-image-batch-job-histories">
+                                    Get Image Batch Job Histories
+                                    <a href="#request-get-image-quota"><i class="glyphicon glyphicon-link"></i></a>
+                                </h2>
+        
+                                <div>
+                                    <p>Every image job was recorded. This API can query the histories of image batch job.</p>
+                                </div>
+        
+                                <div>
+        
+                                    <h3>Endpoint</h3>
+                                    <pre><code class="shell">GET https://app.picaas.io/v1/image_legalization_pipeline_histories</code></pre>
+
+                                    <h3>Parameters</h3>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>page</th>
+                                                <td>Default value is 1.</td>
+                                                <td>Integer</td>
+                                            </tr>
+                                            <tr>
+                                                <th>page_size</th>
+                                                <td>The count of histories per page. Default value is 10. Range is from 1 to 100.</td>
+                                                <td>Integer</td>
+                                            </tr>
+                                            <tr>
+                                                <th>start</th>
+                                                <td>It is timestamp which represents lower bound of query range. Default value is one month ago. The string format is RFC 3339. ex:<code>2019-04-23T14:56:11Z</code>(UTC)</td>
+                                                <td>String</td>
+                                            </tr>
+                                            <tr>
+                                                <th>end</th>
+                                                <td>It is timestamp which represents upper bound of query range. Default value is now. The string format is RFC 3339. ex:<code>2019-04-23T14:56:11Z</code>(UTC)</td>
+                                                <td>String</td>
+                                            </tr>
+                                        </tbody>
+        
+                                    </table>
+
+                                    <h3>Request</h3>
+                                    <h4>Route</h4>
+                                    <pre><code class="shell">GET https://app.picaas.io/v1/image_legalization_pipeline_histories</code></pre>
+                                    <h4>Headers</h4>
+                                    <pre><code>Authorization: Bearer &lt;APP_TOKEN&gt;
+Content-Type: application/json</code></pre>
+
+                                    <h3>Response</h3>
+                                    <h4>Response Fields</h4>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>id</th>
+                                                <td>The id of the image batch job.</td>
+                                                <td>String</td>
+                                            </tr>
+                                            <tr>
+                                                <th>action</th>
+                                                <td>Action type only includes { create }.</td>
+                                                <td>String</td>
+                                            </tr>        
+                                            <tr>
+                                                <th>model_type</th>
+                                                <td>The model type includes { legalization | pre_validation | post_validation }.</td>
+                                                <td>Integer</td>
+                                            </tr>        
+                                            <tr>
+                                                <th>created_at</th>
+                                                <td>The timestamp of creating image batch job</td>
+                                                <td>Integer</td>
+                                            </tr>
+                                            <tr>
+                                                <th>total_image_count</th>
+                                                <td>The number of total images which are computed.</td>
+                                                <td>String</td>
+                                            </tr>
+                                        </tbody>
+        
+                                    </table>
+                                    <h4>Status</h4>
+                                    <pre><code>200 OK</code></pre>
+                                    <h4>Body</h4>
+                                    <pre><code class="json">[
+    {
+        "id": 556,
+        "action": "create",
+        "model_type": "legalization",
+        "created_at": "2020-03-18T06:34:30Z",
+        "total_image_count": 2
+    },
+    {
+        "id": 555,
+        "action": "create",
+        "model_type": "legalization",
+        "created_at": "2020-03-18T06:12:51Z",
+        "total_image_count": 2
+    }
+]</code></pre>
+                                </div>
         
                             </div>
 
@@ -995,6 +1117,7 @@ Content-Type: application/json</code></pre>
                                 <li><b>CSV max size:</b> It can’t exceed <code>10000</code> images per image batch job.
                                 </li>
                                 <li><b>Image max size:</b> every image size can’t exceed <code>2MB</code>.</li>
+                                <li><b>Image format</b> The source Image format has to be <code>jpg</code>, and Picaas also returns <code>jpg</code> for result.</li>
                             </ul>
                         </div>
                     </div>
